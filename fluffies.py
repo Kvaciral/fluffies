@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import numpy as np
+import random
 import sys
 
 RANGE = int(sys.argv[1])
@@ -42,14 +42,14 @@ for action in actions_list:
     actions_weighted.append(len(action)/total_actions)
 
 for fluff in range(RANGE): 
-    states_choice0 = np.random.choice(a=states)
-    states_choice1 = np.random.choice(a=states)
-    colors_choice0 = np.random.choice(a=colors)
-    colors_choice1 = np.random.choice(a=colors)
-    creatures_choice0 = np.random.choice(a=creatures)
-    creatures_choice1 = np.random.choice(a=creatures)
+    states_choice0 = random.choice(states)
+    states_choice1 = random.choice(states)
+    colors_choice0 = random.choice(colors)
+    colors_choice1 = random.choice(colors)
+    creatures_choice0 = random.choice(creatures)
+    creatures_choice1 = random.choice(creatures)
 
-    action_path = np.random.choice(a=actions_path,p=actions_weighted)
+    action_path = random.choices(actions_path,actions_weighted)[0]
 
     if states_choice0[0] in ["a", "e", "i", "o", "u"]:
         prefix0 = "An "
@@ -64,61 +64,61 @@ for fluff in range(RANGE):
     fixed_path = prefix0 + states_choice0 + " " + colors_choice0 + " " + creatures_choice0 + " and " + prefix1 + states_choice1 + " " + colors_choice1 + " " + creatures_choice1 + " are "
 
     if action_path == "whispering":
-        whisper_choice = np.random.choice(a=whisper_stuff)
+        whisper_choice = random.choice(whisper_stuff)
         print(fixed_path + "whispering " + whisper_choice + " to you!")
     elif action_path == "talking": 
-        talking_subject = np.random.choice(a=talking_stuff)
+        talking_subject = random.choice(talking_stuff)
         if talking_subject not in ["music", "tv_serie"]:
             print(fixed_path + "talking about " + talking_subject + " with you!")
         elif talking_subject == "music":
-            genre = np.random.choice(a=music_genres)
+            genre = random.choice(music_genres)
             print(fixed_path + "talking about " + genre + " music with you!")
         elif talking_subject == "tv_serie":
-            serie = np.random.choice(a=tv_series)
+            serie = random.choice(tv_series)
             print(fixed_path + "talking about " + serie + " with you!")
     elif action_path == "throwing":
-        throwing_object = np.random.choice(a=throwing_stuff)
+        throwing_object = random.choice(throwing_stuff)
         if throwing_object != "blobs":
             print(fixed_path + "throwing " + throwing_object + " at you!")
         else:
-            colors_choice2 = np.random.choice(a=colors)
+            colors_choice2 = random.choice(colors)
             print(fixed_path + "throwing " + colors_choice2 + " blobs at you!")
     elif action_path == "sharing":
-        sharing_object = np.random.choice(a=sharing_stuff)
+        sharing_object = random.choice(sharing_stuff)
         print(fixed_path + "sharing " + sharing_object + " with you!")
     elif action_path == "to_actions":
-        to_action = np.random.choice(a=to_actions)
+        to_action = random.choice(to_actions)
         print(fixed_path + to_action + " to you!")
     elif action_path == "on_actions":
-        on_action = np.random.choice(a=on_actions)
+        on_action = random.choice(on_actions)
         print(fixed_path + on_action + " on you!")
     elif action_path == "with_actions":
-        with_action = np.random.choice(a=with_actions)
+        with_action = random.choice(with_actions)
         print(fixed_path + with_action + " with you!")
     elif action_path == "towards_actions":
-        towards_action = np.random.choice(a=towards_actions)
+        towards_action = random.choice(towards_actions)
         print(fixed_path + towards_action + " towards you!")
     elif action_path == "at_actions":
-        at_action = np.random.choice(a=at_actions)
+        at_action = random.choice(at_actions)
         print(fixed_path + at_action + " at you!")
     elif action_path == "in_actions":
-        in_action = np.random.choice(a=in_actions)
+        in_action = random.choice(in_actions)
         print(fixed_path + in_action + " in you!")
     elif action_path == "after_actions":
-        after_action = np.random.choice(a=after_actions)
+        after_action = random.choice(after_actions)
         print(fixed_path + after_action + " after you!")
     elif action_path == "from_actions":
-        from_action = np.random.choice(a=from_actions)
+        from_action = random.choice(from_actions)
         print(fixed_path + from_action + " from you!")
     elif action_path == "about_actions":
-        about_action = np.random.choice(a=about_actions)
+        about_action = random.choice(about_actions)
         print(fixed_path + about_action + " about you!")
     elif action_path == "for_actions":
-        for_action = np.random.choice(a=for_actions)
+        for_action = random.choice(for_actions)
         print(fixed_path + for_action + " for you!")
     elif action_path == "of_actions":
-        of_action = np.random.choice(a=of_actions)
+        of_action = random.choice(of_actions)
         print(fixed_path + of_action + " of you!")
     elif action_path == "plain_actions":
-        plain_action = np.random.choice(a=plain_actions)
+        plain_action = random.choice(plain_actions)
         print(fixed_path + plain_action + " you!")
