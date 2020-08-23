@@ -6,7 +6,7 @@ RANGE = int(sys.argv[1])
 
 states = ["cuddly", "grumpy", "agitated", "shy", "bored", "boisterous", "cute", "hungry", "sleepy", "inquisitive", "scared", "playful", "clueless", "confused", "sad", "pondering", "ignorant", "cheerful", "gloomy", "ecstatic", "depressed", "judgmental", "disillusioned", "frustrated", "mad", "skeptical", "clumsy", "lithe", "assertive", "pious", "narcissistic", "timid", "megalomaniacal", "starving", "absent-minded", "chubby", "dazzling", "unkempt", "bewildered", "scrawny", "obnoxious", "ambitious", "zealous", "witty", "kind", "lazy", "scary", "intimidating", "nervous", "silly", "enigmatic", "worried", "adventurous", "old-fashioned", "adorable", "sullen", "deranged", "nerdy", "geeky", "wise", "sophisticated", "weary", "agnostic", "introverted", "affable", "bright", "shrewd", "compassionate", "conscientious", "considerate", "creative", "diplomatic", "easygoing", "fearless", "friendly", "funny", "gregarious", "modest", "inventive", "intellectual", "independent", "rebellious", "optimistic", "stubborn", "romantic", "unassuming", "mischievous", "heroic", "boastful", "arrogant", "greedy", "cowardly", "clingy", "careless", "impatient", "narrow-minded", "selfish", "cynical", "bitchy", "confrontational", "vain", "aloof", "belligerent", "pompous", "machiavellian", "sneaky", "dogmatic", "pragmatic", "resentful", "possesive", "gullibe", "naive", "finicky", "vulgar", "charming", "amiable", "sympathetic", "observant", "airheaded", "diligent", "kooky", "hilarious", "laid-back", "courageous", "snarky", "stoic", "zen", "surly"]
 colors = ["han purple", "crimson red", "metallic blue", "cyber yellow", "dark orange", "forest green", "pearl white", "smoky black", "beige", "tangerine", "scarlet", "violet", "indigo", "brown", "grey", "silver", "jet black", "iridescent", "fuchsia", "golden brown", "magenta", "translucent"]
-animals = ["cat", "beagle", "labrador", "chihuahua", "bull", "cow", "elephant", "horse", "crocodile", "alligator", "shark", "seal", "sea lion", "walrus", "emperor penguin", "gentoo penguin", "chicken", "ostrich", "tiger", "lion", "gazelle", "hippo", "rhino", "eagle", "dove", "seagull", "cliff racer", "sparrow", "orang-utan", "chimpanzee", "gorilla", "donkey", "bear", "duck", "pig", "tyrannosaurus-rex", "brachiosaurus", "pterodactyl", "stegosaurus", "velociraptor", "zerg", "blob", "blowfish", "mackerel", "dopefish", "guppy", "wolf", "dolphin", "giant sandworm", "sheep", "mouse", "rat", "kangaroo", "octopus", "rabbit", "goat", "rattlesnake", "king cobra", "great horned owl", "elf-owl", "swan", "giraffe", "sperm whale", "humpback whale", "fin whale", "dragon", "platypus", "mammoth", "fox", "goose", "turtle", "unicorn", "phoenix", "mogwai", "gremlin", "chupacabra", "ent", "hydra", "lynx", "wyvern", "hyena", "koala", "buffalo", "crab", "cougar", "bat", "mole", "axolotl", "anteater", "elk", "deer", "moose", "dodo", "frog", "toad", "hedgehog", "emu", "wyrm", "drake", "hamster", "yeti", "jaguar", "gecko", "lemming", "lobster", "parrot", "maine coon", "weasel", "mongoose", "octopus", "panther", "hare", "turkey", "tapir", "wallaby", "wildebeest", "sasquatch", "goa'uld", "squirrel", "beaver", "silt-strider", "pokemon"]
+creatures = ["cat", "beagle", "labrador", "chihuahua", "bull", "cow", "elephant", "horse", "crocodile", "alligator", "shark", "seal", "sea lion", "walrus", "emperor penguin", "gentoo penguin", "chicken", "ostrich", "tiger", "lion", "gazelle", "hippo", "rhino", "eagle", "dove", "seagull", "cliff racer", "sparrow", "orang-utan", "chimpanzee", "gorilla", "donkey", "bear", "duck", "pig", "tyrannosaurus-rex", "brachiosaurus", "pterodactyl", "stegosaurus", "velociraptor", "zerg", "blob", "blowfish", "mackerel", "dopefish", "guppy", "wolf", "dolphin", "giant sandworm", "sheep", "mouse", "rat", "kangaroo", "octopus", "rabbit", "goat", "rattlesnake", "king cobra", "great horned owl", "elf-owl", "swan", "giraffe", "sperm whale", "humpback whale", "fin whale", "dragon", "platypus", "mammoth", "fox", "goose", "turtle", "unicorn", "phoenix", "mogwai", "gremlin", "chupacabra", "ent", "hydra", "lynx", "wyvern", "hyena", "koala", "buffalo", "crab", "cougar", "bat", "mole", "axolotl", "anteater", "elk", "deer", "moose", "dodo", "frog", "toad", "hedgehog", "emu", "wyrm", "drake", "hamster", "yeti", "jaguar", "gecko", "lemming", "lobster", "parrot", "maine coon", "weasel", "mongoose", "octopus", "panther", "hare", "turkey", "tapir", "wallaby", "wildebeest", "sasquatch", "goa'uld", "squirrel", "beaver", "silt-strider", "pokemon"]
 
 at_actions = ["looking", "smirking", "staring", "pouncing", "yawning", "growling", "purring", "yelling", "laughing", "beaming", "belching", "sneezing", "mad", "meowing", "sighing", "shooing", "whistling", "smiling", "winking", "grinning", "blowing", "glowering", "cheering", "waving", "barking", "frowning", "aiming", "scowling", "cringing", "sniffing"]
 to_actions = ["adjusting", "admitting something", "listening", "replying", "responding", "seeing", "speaking", "subscribing", "turning", "answering", "lying", "singing", "grunting", "bowing deeply", "delivering a pizza", "indifferent", "writing a letter", "being jerks", "being disrespectful", "handing a package", "apologizing", "objecting", "selling", "dealing some cards", "dealing some drugs", "preaching"]
@@ -41,19 +41,13 @@ for action in actions_list:
 for action in actions_list:
     actions_weighted.append(len(action)/total_actions)
 
-# print((len(states)*len(colors)*len(animals))*(len(states)*len(colors)*len(animals) + 1)/2 * total_actions)
-# print(total_actions)
-# print(len(states))
-# print(actions_weighted)
-# print(len(animals)*len(colors)*len(states))
-
 for fluff in range(RANGE): 
     states_choice0 = np.random.choice(a=states)
     states_choice1 = np.random.choice(a=states)
     colors_choice0 = np.random.choice(a=colors)
     colors_choice1 = np.random.choice(a=colors)
-    animals_choice0 = np.random.choice(a=animals)
-    animals_choice1 = np.random.choice(a=animals)
+    creatures_choice0 = np.random.choice(a=creatures)
+    creatures_choice1 = np.random.choice(a=creatures)
 
     action_path = np.random.choice(a=actions_path,p=actions_weighted)
 
@@ -67,7 +61,7 @@ for fluff in range(RANGE):
     else:
         prefix1 = "a "
 
-    fixed_path = prefix0 + states_choice0 + " " + colors_choice0 + " " + animals_choice0 + " and " + prefix1 + states_choice1 + " " + colors_choice1 + " " + animals_choice1 + " are "
+    fixed_path = prefix0 + states_choice0 + " " + colors_choice0 + " " + creatures_choice0 + " and " + prefix1 + states_choice1 + " " + colors_choice1 + " " + creatures_choice1 + " are "
 
     if action_path == "whispering":
         whisper_choice = np.random.choice(a=whisper_stuff)
