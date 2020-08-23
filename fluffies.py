@@ -9,10 +9,54 @@ def parse_args():
                         help='Number of fluffies to generate.')
     return parser.parse_args()
 
+class TermColors:
+    '''
+    Helper class to generate terminal control sequences.
+    '''
+    @staticmethod
+    def rgb(hh):
+        '''HTML color to terminal escape sequence'''
+        assert(hh[0] == '#' and len(hh) == 7)
+        rr = int(hh[1:3], 16)
+        gg = int(hh[3:5], 16)
+        bb = int(hh[5:7], 16)
+        return f'\x1b[38;2;{rr};{gg};{bb}m'
+    reset = '\x1b[0m' # reset to terminal defaults
+
+def colorize(color):
+    '''
+    Convert a tuple (color, string) to a terminal-colorized string.
+    '''
+    return T.rgb(color[0]) + color[1] + T.reset
+
 args = parse_args()
+T = TermColors()
 
 states = ["cuddly", "grumpy", "agitated", "shy", "bored", "boisterous", "cute", "hungry", "sleepy", "inquisitive", "scared", "playful", "clueless", "confused", "sad", "pondering", "ignorant", "cheerful", "gloomy", "ecstatic", "depressed", "judgmental", "disillusioned", "frustrated", "mad", "skeptical", "clumsy", "lithe", "assertive", "pious", "narcissistic", "timid", "megalomaniacal", "starving", "absent-minded", "chubby", "dazzling", "unkempt", "bewildered", "scrawny", "obnoxious", "ambitious", "zealous", "witty", "kind", "lazy", "scary", "intimidating", "nervous", "silly", "enigmatic", "worried", "adventurous", "old-fashioned", "adorable", "sullen", "deranged", "nerdy", "geeky", "wise", "sophisticated", "weary", "agnostic", "introverted", "affable", "bright", "shrewd", "compassionate", "conscientious", "considerate", "creative", "diplomatic", "easygoing", "fearless", "friendly", "funny", "gregarious", "modest", "inventive", "intellectual", "independent", "rebellious", "optimistic", "stubborn", "romantic", "unassuming", "mischievous", "heroic", "boastful", "arrogant", "greedy", "cowardly", "clingy", "careless", "impatient", "narrow-minded", "selfish", "cynical", "bitchy", "confrontational", "vain", "aloof", "belligerent", "pompous", "machiavellian", "sneaky", "dogmatic", "pragmatic", "resentful", "possesive", "gullibe", "naive", "finicky", "vulgar", "charming", "amiable", "sympathetic", "observant", "airheaded", "diligent", "kooky", "hilarious", "laid-back", "courageous", "snarky", "stoic", "zen", "surly"]
-colors = ["han purple", "crimson red", "metallic blue", "cyber yellow", "dark orange", "forest green", "pearl white", "smoky black", "beige", "tangerine", "scarlet", "violet", "indigo", "brown", "grey", "silver", "jet black", "iridescent", "fuchsia", "golden brown", "magenta", "translucent"]
+colors = [
+    ("#5218fa", "han purple"),
+    ("#990000", "crimson red"),
+    ("#4682b4", "metallic blue"),
+    ("#ffd300", "cyber yellow"),
+    ("#ff8c00", "dark orange"),
+    ("#228B22", "forest green"),
+    ("#eae0c8", "pearl white"),
+    ("#100C08", "smoky black"),
+    ("#f5f5dc", "beige"),
+    ("#f28500", "tangerine"),
+    ("#8c1717", "scarlet"),
+    ("#ee82ee", "violet"),
+    ("#4b0082", "indigo"),
+    ("#a52a2a", "brown"),
+    ("#808080", "grey"),
+    ("#c0c0c0", "silver"),
+    ("#343434", "jet black"),
+    ("#ffffff", "iridescent"),
+    ("#ff00ff", "fuchsia"),
+    ("#996515", "golden brown"),
+    ("#ff00ff", "magenta"),
+    ("#ffffff", "translucent"),
+]
 creatures = ["cat", "beagle", "labrador", "chihuahua", "bull", "cow", "elephant", "horse", "crocodile", "alligator", "shark", "seal", "sea lion", "walrus", "emperor penguin", "gentoo penguin", "chicken", "ostrich", "tiger", "lion", "gazelle", "hippo", "rhino", "eagle", "dove", "seagull", "cliff racer", "sparrow", "orang-utan", "chimpanzee", "gorilla", "donkey", "bear", "duck", "pig", "tyrannosaurus-rex", "brachiosaurus", "pterodactyl", "stegosaurus", "velociraptor", "zerg", "blob", "blowfish", "mackerel", "dopefish", "guppy", "wolf", "dolphin", "giant sandworm", "sheep", "mouse", "rat", "kangaroo", "octopus", "rabbit", "goat", "rattlesnake", "king cobra", "great horned owl", "elf-owl", "swan", "giraffe", "sperm whale", "humpback whale", "fin whale", "dragon", "platypus", "mammoth", "fox", "goose", "turtle", "unicorn", "phoenix", "mogwai", "gremlin", "chupacabra", "ent", "hydra", "lynx", "wyvern", "hyena", "koala", "buffalo", "crab", "cougar", "bat", "mole", "axolotl", "anteater", "elk", "deer", "moose", "dodo", "frog", "toad", "hedgehog", "emu", "wyrm", "drake", "hamster", "yeti", "jaguar", "gecko", "lemming", "lobster", "parrot", "maine coon", "weasel", "mongoose", "octopus", "panther", "hare", "turkey", "tapir", "wallaby", "wildebeest", "sasquatch", "goa'uld", "squirrel", "beaver", "silt-strider", "pokemon"]
 
 at_actions = ["looking", "smirking", "staring", "pouncing", "yawning", "growling", "purring", "yelling", "laughing", "beaming", "belching", "sneezing", "mad", "meowing", "sighing", "shooing", "whistling", "smiling", "winking", "grinning", "blowing", "glowering", "cheering", "waving", "barking", "frowning", "aiming", "scowling", "cringing", "sniffing"]
@@ -51,8 +95,8 @@ for action in actions_list:
 for fluff in range(args.range):
     states_choice0 = random.choice(states)
     states_choice1 = random.choice(states)
-    colors_choice0 = random.choice(colors)
-    colors_choice1 = random.choice(colors)
+    colors_choice0 = colorize(random.choice(colors))
+    colors_choice1 = colorize(random.choice(colors))
     creatures_choice0 = random.choice(creatures)
     creatures_choice1 = random.choice(creatures)
 
@@ -88,7 +132,7 @@ for fluff in range(args.range):
         if throwing_object != "blobs":
             print(fixed_path + "throwing " + throwing_object + " at you!")
         else:
-            colors_choice2 = random.choice(colors)
+            colors_choice2 = colorize(random.choice(colors))
             print(fixed_path + "throwing " + colors_choice2 + " blobs at you!")
     elif action_path == "sharing":
         sharing_object = random.choice(sharing_stuff)
