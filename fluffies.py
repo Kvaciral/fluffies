@@ -1,8 +1,15 @@
 #!/usr/bin/python3
+import argparse
 import random
 import sys
 
-RANGE = int(sys.argv[1])
+def parse_args():
+    parser = argparse.ArgumentParser(description='A string-generator of creatures-encounters.')
+    parser.add_argument('range', metavar='N', type=int,
+                        help='Number of fluffies to generate.')
+    return parser.parse_args()
+
+args = parse_args()
 
 states = ["cuddly", "grumpy", "agitated", "shy", "bored", "boisterous", "cute", "hungry", "sleepy", "inquisitive", "scared", "playful", "clueless", "confused", "sad", "pondering", "ignorant", "cheerful", "gloomy", "ecstatic", "depressed", "judgmental", "disillusioned", "frustrated", "mad", "skeptical", "clumsy", "lithe", "assertive", "pious", "narcissistic", "timid", "megalomaniacal", "starving", "absent-minded", "chubby", "dazzling", "unkempt", "bewildered", "scrawny", "obnoxious", "ambitious", "zealous", "witty", "kind", "lazy", "scary", "intimidating", "nervous", "silly", "enigmatic", "worried", "adventurous", "old-fashioned", "adorable", "sullen", "deranged", "nerdy", "geeky", "wise", "sophisticated", "weary", "agnostic", "introverted", "affable", "bright", "shrewd", "compassionate", "conscientious", "considerate", "creative", "diplomatic", "easygoing", "fearless", "friendly", "funny", "gregarious", "modest", "inventive", "intellectual", "independent", "rebellious", "optimistic", "stubborn", "romantic", "unassuming", "mischievous", "heroic", "boastful", "arrogant", "greedy", "cowardly", "clingy", "careless", "impatient", "narrow-minded", "selfish", "cynical", "bitchy", "confrontational", "vain", "aloof", "belligerent", "pompous", "machiavellian", "sneaky", "dogmatic", "pragmatic", "resentful", "possesive", "gullibe", "naive", "finicky", "vulgar", "charming", "amiable", "sympathetic", "observant", "airheaded", "diligent", "kooky", "hilarious", "laid-back", "courageous", "snarky", "stoic", "zen", "surly"]
 colors = ["han purple", "crimson red", "metallic blue", "cyber yellow", "dark orange", "forest green", "pearl white", "smoky black", "beige", "tangerine", "scarlet", "violet", "indigo", "brown", "grey", "silver", "jet black", "iridescent", "fuchsia", "golden brown", "magenta", "translucent"]
@@ -41,7 +48,7 @@ for action in actions_list:
 for action in actions_list:
     actions_weighted.append(len(action)/total_actions)
 
-for fluff in range(RANGE): 
+for fluff in range(args.range):
     states_choice0 = random.choice(states)
     states_choice1 = random.choice(states)
     colors_choice0 = random.choice(colors)
