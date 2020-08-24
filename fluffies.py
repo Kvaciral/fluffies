@@ -74,7 +74,7 @@ of_actions = ["standing in front", "making fun", "approving", "dreaming", "getti
 
 whisper_stuff = ["profanities", "sweet nothings", "death-threats", "declarations of independence", "evil dark secrets", "the next winning lottery numbers", "what they had for breakfast", "the answer to the meaning of life", "their new year resolutions", "their prejudices", "their deepest fears", "their root passwords", "something unintelligible", "the location of Atlantis"]
 throwing_stuff = ["bananas", "mud", "stones", "nuclear bombs", "twigs", "snowballs", "blobs", "lawsuits", "money", "paper airplanes", "empty cans", "facts and statistics", "ancient gods", "staplers", "the kitchen sink", "floppy disks", "sweet potatoe pies", "dart arrows", "rotten tomatoes and eggs", "ancient IBM mainframes", "magical fireballs", "shrubberies", "logical bombs", "towels", "a hula hoop"]
-talking_stuff = ["the stormy weather", "social progressive politics", "rpg computer-games", "the meaning of life", "interstellar travel", "surreal stuff", "music", "science-fiction books", "wanton destruction", "world domination", "computer security", "tv_serie", "bathroom hygiene", "the new world order", "tribalism", "the merits of wearing fluffy shoes", "Picard versus Kirk", "bitcoin", "boring stuff", "global warming", "eating contests", "Python", "life extension", "anthropomorphism", "Mars colonization", "their fierce opposition to WW3", "the incoming meteorite", "tabletop rpg-gaming", "the newest computer hardware", "vikings", "the end of the world", "the monster of Loch Ness", "social distancing", "vegetarianism", "the state of the economy"]
+talking_stuff = ["the stormy weather", "social progressive politics", "rpg computer-games", "the meaning of life", "interstellar travel", "surreal stuff", "music", "science-fiction books", "wanton destruction", "world domination", "computer security", "tv_series", "bathroom hygiene", "the new world order", "tribalism", "the merits of wearing fluffy shoes", "Picard versus Kirk", "bitcoin", "boring stuff", "global warming", "eating contests", "Python", "life extension", "anthropomorphism", "Mars colonization", "their fierce opposition to WW3", "the incoming meteorite", "tabletop rpg-gaming", "the newest computer hardware", "vikings", "the end of the world", "the monster of Loch Ness", "social distancing", "vegetarianism", "the state of the economy"]
 sharing_stuff = ["their hopes and dreams", "their vegetarian lunch", "a tiny run-down apartment downtown", "their miserable sorrows", "a feast fit for kings", "the spoils of war", "their expertise on the subject", "their swimming pool", "their FTL spaceship", "their server", "a joint", "their planet", "their spice melange"]
 
 music_genres = ["rap", "classical", "bitpop", "industrial", "ebm", "hiphop", "jazz", "electronic", "ambient", "80s", "reggae", "rock", "country", "techno", "gospel", "black metal", "alternative rock", "ska", "new wave", "punk", "dubstep", "hardstyle", "happy hardcore", "rave", "symphonic metal"]
@@ -119,14 +119,14 @@ for fluff in range(args.range):
         print(fixed_path + "whispering " + whisper_choice + " to you!")
     elif action_path == "talking": 
         talking_subject = random.choice(talking_stuff)
-        if talking_subject not in ["music", "tv_serie"]:
+        if talking_subject not in ["music", "tv_series"]:
             print(fixed_path + "talking about " + talking_subject + " with you!")
         elif talking_subject == "music":
             genre = random.choice(music_genres)
             print(fixed_path + "talking about " + genre + " music with you!")
-        elif talking_subject == "tv_serie":
-            serie = random.choice(tv_series)
-            print(fixed_path + "talking about " + serie + " with you!")
+        elif talking_subject == "tv_series":
+            series = random.choice(tv_series)
+            print(fixed_path + "talking about " + series + " with you!")
     elif action_path == "throwing":
         throwing_object = random.choice(throwing_stuff)
         if throwing_object != "blobs":
