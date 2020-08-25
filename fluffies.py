@@ -113,7 +113,6 @@ for fluff in range(args.range):
         elif talking_subject == "elephant in the room":
             colors_choice2 = colorize(random.choice(colors))
             print(fixed_path + "talking about the " + colors_choice2 + " elephant in the room with you!")
-
     elif action_path == "throwing":
         throwing_object = random.choice(throwing_stuff)
         if throwing_object != "blobs":
