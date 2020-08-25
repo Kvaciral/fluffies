@@ -60,8 +60,10 @@ tv_series = data["tv_series"]
 
 f.close()
 
-actions_list = [whisper_stuff, talking_stuff, throwing_stuff, sharing_stuff, to_actions, on_actions, with_actions, towards_actions, at_actions, in_actions, after_actions, from_actions, about_actions, for_actions, of_actions, plain_actions]
-actions_path = ["whispering", "talking", "throwing", "sharing", "to_actions", "on_actions", "with_actions", "towards_actions", "at_actions", "in_actions", "after_actions", "from_actions", "about_actions", "for_actions", "of_actions", "plain_actions"]
+actions_list = [whisper_stuff, talking_stuff, throwing_stuff, sharing_stuff, to_actions, on_actions, with_actions, towards_actions,
+                at_actions, in_actions, after_actions, from_actions, about_actions, for_actions, of_actions, plain_actions]
+actions_path = ["whispering", "talking", "throwing", "sharing", "to_actions", "on_actions", "with_actions", "towards_actions",
+                "at_actions", "in_actions", "after_actions", "from_actions", "about_actions", "for_actions", "of_actions", "plain_actions"]
 
 total_actions = 0
 actions_weighted = []
@@ -92,7 +94,8 @@ for fluff in range(args.range):
     else:
         prefix1 = "a "
 
-    fixed_path = prefix0 + states_choice0 + " " + colors_choice0 + " " + creatures_choice0 + " and " + prefix1 + states_choice1 + " " + colors_choice1 + " " + creatures_choice1 + " are "
+    fixed_path = prefix0 + states_choice0 + " " + colors_choice0 + " " + creatures_choice0 + " and " + \
+                 prefix1 + states_choice1 + " " + colors_choice1 + " " + creatures_choice1 + " are "
 
     if action_path == "whispering":
         whisper_choice = random.choice(whisper_stuff)
@@ -110,6 +113,7 @@ for fluff in range(args.range):
         elif talking_subject == "elephant in the room":
             colors_choice2 = colorize(random.choice(colors))
             print(fixed_path + "talking about the " + colors_choice2 + " elephant in the room with you!")
+
     elif action_path == "throwing":
         throwing_object = random.choice(throwing_stuff)
         if throwing_object != "blobs":
