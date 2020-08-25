@@ -99,7 +99,7 @@ for fluff in range(args.range):
         print(fixed_path + "whispering " + whisper_choice + " to you!")
     elif action_path == "talking": 
         talking_subject = random.choice(talking_stuff)
-        if talking_subject not in ["music", "tv_series"]:
+        if talking_subject not in ["music", "tv_series", "elephant in the room"]:
             print(fixed_path + "talking about " + talking_subject + " with you!")
         elif talking_subject == "music":
             genre = random.choice(music_genres)
@@ -107,6 +107,9 @@ for fluff in range(args.range):
         elif talking_subject == "tv_series":
             series = random.choice(tv_series)
             print(fixed_path + "talking about " + series + " with you!")
+        elif talking_subject == "elephant in the room":
+            colors_choice2 = colorize(random.choice(colors))
+            print(fixed_path + "talking about the " + colors_choice2 + " elephant in the room with you!")
     elif action_path == "throwing":
         throwing_object = random.choice(throwing_stuff)
         if throwing_object != "blobs":
