@@ -34,44 +34,44 @@ args = parse_args()
 T = TermColors()
 
 f = open("lists.json")
-data = json.load(f)
+lists = json.load(f)
 
-states = data["states"]
-colors = data["colors"]
-creatures = data["creatures"]
-at_actions = data["at_actions"]
-to_actions = data["to_actions"]
-on_actions = data["on_actions"]
-with_actions = data["with_actions"]
-towards_actions = data["towards_actions"]
-plain_actions = data["plain_actions"]
-in_actions = data["in_actions"]
-after_actions = data["after_actions"]
-from_actions = data["from_actions"]
-about_actions = data["about_actions"]
-for_actions = data["for_actions"]
-of_actions = data["of_actions"]
-whisper_stuff = data["whisper_stuff"]
-throwing_stuff = data["throwing_stuff"]
-talking_stuff = data["talking_stuff"]
-sharing_stuff = data["sharing_stuff"]
-music_genres = data["music_genres"]
-tv_series = data["tv_series"]
+states = lists["states"]
+colors = lists["colors"]
+creatures = lists["creatures"]
+at_actions = lists["at_actions"]
+to_actions = lists["to_actions"]
+on_actions = lists["on_actions"]
+with_actions = lists["with_actions"]
+towards_actions = lists["towards_actions"]
+plain_actions = lists["plain_actions"]
+in_actions = lists["in_actions"]
+after_actions = lists["after_actions"]
+from_actions = lists["from_actions"]
+about_actions = lists["about_actions"]
+for_actions = lists["for_actions"]
+of_actions = lists["of_actions"]
+whisper_stuff = lists["whisper_stuff"]
+throwing_stuff = lists["throwing_stuff"]
+talking_stuff = lists["talking_stuff"]
+sharing_stuff = lists["sharing_stuff"]
+music_genres = lists["music_genres"]
+tv_series = lists["tv_series"]
 
 f.close()
 
-actions_list = [whisper_stuff, talking_stuff, throwing_stuff, sharing_stuff, to_actions, on_actions, with_actions, towards_actions,
-                at_actions, in_actions, after_actions, from_actions, about_actions, for_actions, of_actions, plain_actions]
-actions_path = ["whispering", "talking", "throwing", "sharing", "to_actions", "on_actions", "with_actions", "towards_actions",
-                "at_actions", "in_actions", "after_actions", "from_actions", "about_actions", "for_actions", "of_actions", "plain_actions"]
+actions_lists = [whisper_stuff, talking_stuff, throwing_stuff, sharing_stuff, to_actions, on_actions, with_actions, towards_actions,
+                 at_actions, in_actions, after_actions, from_actions, about_actions, for_actions, of_actions, plain_actions]
+actions_paths = ["whispering", "talking", "throwing", "sharing", "to_actions", "on_actions", "with_actions", "towards_actions",
+                 "at_actions", "in_actions", "after_actions", "from_actions", "about_actions", "for_actions", "of_actions", "plain_actions"]
 
 total_actions = 0
 actions_weighted = []
 
-for action in actions_list:
+for action in actions_lists:
     total_actions += len(action)
 
-for action in actions_list:
+for action in actions_lists:
     actions_weighted.append(len(action)/total_actions)
 
 for fluff in range(args.range):
@@ -82,7 +82,7 @@ for fluff in range(args.range):
     creatures_choice0 = random.choice(creatures)
     creatures_choice1 = random.choice(creatures)
 
-    action_path = random.choices(actions_path,actions_weighted)[0]
+    action_path = random.choices(actions_paths,actions_weighted)[0]
 
     if states_choice0[0] in ["a", "e", "i", "o", "u"]:
         prefix0 = "An "
