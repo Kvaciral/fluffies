@@ -5,7 +5,7 @@ import random
 import sys
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='A string-generator of creatures-encounters.')
+    parser = argparse.ArgumentParser(description='A string-generator of anthropomorphic creatures-encounters.')
     parser.add_argument('range', metavar='N', type=int,
                         help='Number of fluffies to generate.')
     return parser.parse_args()
