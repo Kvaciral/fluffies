@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import argparse
+import json
 import random
 import sys
 
@@ -32,53 +33,32 @@ def colorize(color):
 args = parse_args()
 T = TermColors()
 
-states = ["cuddly", "grumpy", "agitated", "shy", "bored", "boisterous", "cute", "hungry", "sleepy", "inquisitive", "scared", "playful", "clueless", "confused", "sad", "pondering", "ignorant", "cheerful", "gloomy", "ecstatic", "depressed", "judgmental", "disillusioned", "frustrated", "mad", "skeptical", "clumsy", "lithe", "assertive", "pious", "narcissistic", "timid", "megalomaniacal", "starving", "absent-minded", "chubby", "dazzling", "unkempt", "bewildered", "scrawny", "obnoxious", "ambitious", "zealous", "witty", "kind", "lazy", "scary", "intimidating", "nervous", "silly", "enigmatic", "worried", "adventurous", "old-fashioned", "adorable", "sullen", "deranged", "nerdy", "geeky", "wise", "sophisticated", "weary", "agnostic", "introverted", "affable", "bright", "shrewd", "compassionate", "conscientious", "considerate", "creative", "diplomatic", "easygoing", "fearless", "friendly", "funny", "gregarious", "modest", "inventive", "intellectual", "independent", "rebellious", "optimistic", "stubborn", "romantic", "unassuming", "mischievous", "heroic", "boastful", "arrogant", "greedy", "cowardly", "clingy", "careless", "impatient", "narrow-minded", "selfish", "cynical", "bitchy", "confrontational", "vain", "aloof", "belligerent", "pompous", "machiavellian", "sneaky", "dogmatic", "pragmatic", "resentful", "possesive", "gullibe", "naive", "finicky", "vulgar", "charming", "amiable", "sympathetic", "observant", "airheaded", "diligent", "kooky", "hilarious", "laid-back", "courageous", "snarky", "stoic", "zen", "surly"]
-colors = [
-    ("#5218fa", "han purple"),
-    ("#990000", "crimson red"),
-    ("#4682b4", "metallic blue"),
-    ("#ffd300", "cyber yellow"),
-    ("#ff8c00", "dark orange"),
-    ("#228B22", "forest green"),
-    ("#eae0c8", "pearl white"),
-    ("#100C08", "smoky black"),
-    ("#f5f5dc", "beige"),
-    ("#f28500", "tangerine"),
-    ("#8c1717", "scarlet"),
-    ("#ee82ee", "violet"),
-    ("#4b0082", "indigo"),
-    ("#a52a2a", "brown"),
-    ("#808080", "grey"),
-    ("#c0c0c0", "silver"),
-    ("#343434", "jet black"),
-    ("#ffffff", "iridescent"),
-    ("#ff00ff", "fuchsia"),
-    ("#996515", "golden brown"),
-    ("#ff00ff", "magenta"),
-    ("#ffffff", "translucent"),
-]
-creatures = ["cat", "beagle", "labrador", "chihuahua", "bull", "cow", "elephant", "horse", "crocodile", "alligator", "shark", "seal", "sea lion", "walrus", "emperor penguin", "gentoo penguin", "chicken", "ostrich", "tiger", "lion", "gazelle", "hippo", "rhino", "eagle", "dove", "seagull", "cliff racer", "sparrow", "orang-utan", "chimpanzee", "gorilla", "donkey", "bear", "duck", "pig", "tyrannosaurus-rex", "brachiosaurus", "pterodactyl", "stegosaurus", "velociraptor", "zerg", "blob", "blowfish", "mackerel", "dopefish", "guppy", "wolf", "dolphin", "giant sandworm", "sheep", "mouse", "rat", "kangaroo", "octopus", "rabbit", "goat", "rattlesnake", "king cobra", "great horned owl", "elf-owl", "swan", "giraffe", "sperm whale", "humpback whale", "fin whale", "dragon", "platypus", "mammoth", "fox", "goose", "turtle", "unicorn", "phoenix", "mogwai", "gremlin", "chupacabra", "ent", "hydra", "lynx", "wyvern", "hyena", "koala", "buffalo", "crab", "cougar", "bat", "mole", "axolotl", "anteater", "elk", "deer", "moose", "dodo", "frog", "toad", "hedgehog", "emu", "wyrm", "drake", "hamster", "yeti", "jaguar", "gecko", "lemming", "lobster", "parrot", "maine coon", "weasel", "mongoose", "octopus", "panther", "hare", "turkey", "tapir", "wallaby", "wildebeest", "sasquatch", "goa'uld", "squirrel", "beaver", "silt-strider", "pokemon"]
+f = open("lists.json")
+data = json.load(f)
 
-at_actions = ["looking", "smirking", "staring", "pouncing", "yawning", "growling", "purring", "yelling", "laughing", "beaming", "belching", "sneezing", "mad", "meowing", "sighing", "shooing", "whistling", "smiling", "winking", "grinning", "blowing", "glowering", "cheering", "waving", "barking", "frowning", "aiming", "scowling", "cringing", "sniffing"]
-to_actions = ["adjusting", "admitting something", "listening", "replying", "responding", "seeing", "speaking", "subscribing", "turning", "answering", "lying", "singing", "grunting", "bowing deeply", "delivering a pizza", "indifferent", "writing a letter", "being jerks", "being disrespectful", "handing a package", "apologizing", "objecting", "selling", "dealing some cards", "dealing some drugs", "preaching"]
-on_actions = ["gaining ground", "jumping up and down", "feasting", "declaring war", "waiting", "counting", "homing in", "depending", "projecting", "imposing their will", "turning", "getting medieval"]
-with_actions = ["agreeing", "disagreeing", "argueing", "colliding", "fighting", "quarreling", "meeting", "toying", "philosophizing", "reminiscing", "upset", "dancing", "dining", "playing a game of tic-tac-toe", "smoking a joint", "drinking a beer", "fed up", "weeping", "singing a song", "harvesting the land", "waging a war", "chilling", "laughing", "mesmerized", "making a deal", "collaborating", "associating", "making peace", "partying", "playing a game of poker"]
-towards_actions = ["walking", "running", "flying", "swimming", "bouncing", "rolling", "wombling", "air-floating", "galloping", "sailing", "jet skiing", "paragliding", "shuffling"]
-plain_actions = ["ignoring", "killing", "mocking", "patronizing", "hunting", "hugging", "insulting", "praising", "suing", "begrudging", "scrutinizing", "discussing", "mugging", "trolling", "watching", "berating", "punishing", "confronting", "representing", "not amused by", "blackmailing", "immortalizing", "arresting", "curing", "incarcerating", "reviewing", "ratifying", "judging", "impeaching", "buying", "selling", "gaslighting", "zapping", "trash-talking", "poking", "worshipping", "teaching", "mindreading", "spoiling", "neglecting", "firing", "serving"]
-in_actions = ["disappointed", "having faith"]
-after_actions = ["looking", "coming"]
-from_actions = ["running away", "turning away", "getting their money's worth", "taking no bullshit", "slowly backing away", "hiding", "taking your sanity"]
-about_actions = ["argueing", "caring", "concerned", "dreaming", "forgetting", "hearing", "joking", "talking", "quarreling", "thinking", "worrying", "writing a book", "warning the others", "being warned"]
-for_actions = ["accounting", "taking care", "paying", "preparing", "providing", "searching", "substituting", "rooting", "working", "embarrassed", "responsible", "taking the bullet"]
-of_actions = ["standing in front", "making fun", "approving", "dreaming", "getting rid", "getting tired", "hearing", "being reminded", "mindful", "totally unaware", "a vivid hallucination", "taking care"]
+states = data["states"]
+colors = data["colors"]
+creatures = data["creatures"]
+at_actions = data["at_actions"]
+to_actions = data["to_actions"]
+on_actions = data["on_actions"]
+with_actions = data["with_actions"]
+towards_actions = data["towards_actions"]
+plain_actions = data["plain_actions"]
+in_actions = data["in_actions"]
+after_actions = data["after_actions"]
+from_actions = data["from_actions"]
+about_actions = data["about_actions"]
+for_actions = data["for_actions"]
+of_actions = data["of_actions"]
+whisper_stuff = data["whisper_stuff"]
+throwing_stuff = data["throwing_stuff"]
+talking_stuff = data["talking_stuff"]
+sharing_stuff = data["sharing_stuff"]
+music_genres = data["music_genres"]
+tv_series = data["tv_series"]
 
-whisper_stuff = ["profanities", "sweet nothings", "death-threats", "declarations of independence", "evil dark secrets", "the next winning lottery numbers", "what they had for breakfast", "the answer to the meaning of life", "their new year resolutions", "their prejudices", "their deepest fears", "their root passwords", "something unintelligible", "the location of Atlantis"]
-throwing_stuff = ["bananas", "mud", "stones", "nuclear bombs", "twigs", "snowballs", "blobs", "lawsuits", "money", "paper airplanes", "empty cans", "facts and statistics", "ancient gods", "staplers", "the kitchen sink", "floppy disks", "sweet potatoe pies", "dart arrows", "rotten tomatoes and eggs", "ancient IBM mainframes", "magical fireballs", "shrubberies", "logical bombs", "towels", "a hula hoop"]
-talking_stuff = ["the stormy weather", "social progressive politics", "rpg computer-games", "the meaning of life", "interstellar travel", "surreal stuff", "music", "science-fiction books", "wanton destruction", "world domination", "computer security", "tv_series", "bathroom hygiene", "the new world order", "tribalism", "the merits of wearing fluffy shoes", "Picard versus Kirk", "bitcoin", "boring stuff", "global warming", "eating contests", "Python", "life extension", "anthropomorphism", "Mars colonization", "their fierce opposition to WW3", "the incoming meteorite", "tabletop rpg-gaming", "the newest computer hardware", "vikings", "the end of the world", "the monster of Loch Ness", "social distancing", "vegetarianism", "the state of the economy"]
-sharing_stuff = ["their hopes and dreams", "their vegetarian lunch", "a tiny run-down apartment downtown", "their miserable sorrows", "a feast fit for kings", "the spoils of war", "their expertise on the subject", "their swimming pool", "their FTL spaceship", "their server", "a joint", "their planet", "their spice melange"]
-
-music_genres = ["rap", "classical", "bitpop", "industrial", "ebm", "hiphop", "jazz", "electronic", "ambient", "80s", "reggae", "rock", "country", "techno", "gospel", "black metal", "alternative rock", "ska", "new wave", "punk", "dubstep", "hardstyle", "happy hardcore", "rave", "symphonic metal"]
-tv_series = ["Breaking Bad", "Sons of Anarchy", "The Witcher", "Game of Thrones", "Teenage Mutant Ninja Turtles", "Black Mirror", "Babylon 5", "Castlevania", "The Expanse"]
+f.close()
 
 actions_list = [whisper_stuff, talking_stuff, throwing_stuff, sharing_stuff, to_actions, on_actions, with_actions, towards_actions, at_actions, in_actions, after_actions, from_actions, about_actions, for_actions, of_actions, plain_actions]
 actions_path = ["whispering", "talking", "throwing", "sharing", "to_actions", "on_actions", "with_actions", "towards_actions", "at_actions", "in_actions", "after_actions", "from_actions", "about_actions", "for_actions", "of_actions", "plain_actions"]
