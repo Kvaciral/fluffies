@@ -505,6 +505,7 @@
         "the monster of Loch Ness",
         "the new world order",
         "the newest computer hardware",
+        "the pandemic",
         "the state of the economy",
         "the stormy weather",
         "their fierce opposition to WW3",
@@ -540,7 +541,8 @@
         "sweet potatoe pies",
         "the kitchen sink",
         "towels",
-        "twigs"
+        "twigs",
+        "vaccines"
     ],
     "to_actions": [
         "adjusting",
@@ -600,7 +602,8 @@
         "Stargate:SG-1",
         "Teenage Mutant Ninja Turtles",
         "The Expanse",
-        "The Witcher"
+        "The Witcher",
+        "Vikings"
     ],
     "whisper_stuff": [
         "death-threats",
