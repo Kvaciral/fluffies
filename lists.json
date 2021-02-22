@@ -27,6 +27,7 @@
         "blowing",
         "cheering",
         "cringing",
+        "fishing",
         "frowning",
         "glowering",
         "grinning",
@@ -478,6 +479,7 @@
     ],
     "talking_stuff": [
         "Mars colonization",
+        "Musk's latest antics",
         "Picard versus Kirk",
         "Python",
         "anthropomorphism",
@@ -498,6 +500,7 @@
         "social progressive politics",
         "surreal stuff",
         "tabletop rpg-gaming",
+        "the annihilation of humanity",
         "the end of the world",
         "the incoming meteorite",
         "the meaning of life",
@@ -505,8 +508,10 @@
         "the monster of Loch Ness",
         "the new world order",
         "the newest computer hardware",
+        "the pandemic",
         "the state of the economy",
         "the stormy weather",
+        "the unfathomable size of the universe",
         "their fierce opposition to WW3",
         "tribalism",
         "tv_series",
@@ -540,7 +545,8 @@
         "sweet potatoe pies",
         "the kitchen sink",
         "towels",
-        "twigs"
+        "twigs",
+        "vaccines"
     ],
     "to_actions": [
         "adjusting",
@@ -562,6 +568,7 @@
         "lying",
         "objecting",
         "preaching",
+        "proselytizing",
         "replying",
         "responding",
         "seeing",
@@ -600,7 +607,8 @@
         "Stargate:SG-1",
         "Teenage Mutant Ninja Turtles",
         "The Expanse",
-        "The Witcher"
+        "The Witcher",
+        "Vikings"
     ],
     "whisper_stuff": [
         "death-threats",
